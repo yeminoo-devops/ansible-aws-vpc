@@ -26,7 +26,7 @@
         region: "{{ region }}"
         az: "{{ zone1 }}"
         state: "{{ state }}"
-        cide: "{{ PubSub1Cidr }}"
+        cidr: "{{ PubSub1Cidr }}"
         map_public: yes
         resource_tags: 
           Name: vprofile-pubsub1
