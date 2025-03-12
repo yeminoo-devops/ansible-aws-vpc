@@ -111,7 +111,7 @@
         routes: 
           - dest: 0.0.0.0/0
             gateway_id: "{{ igw_out.gateway_id }}"
-      register: pubRT_OUT
+      register: pubRT_out
 
     - name: Create new nat gateway and allocate new EIP if a nat gateway does not yet exist
       ec2_vpc_nat_gateway: 
@@ -136,3 +136,18 @@
           - dest: 0.0.0.0/0
             gateway_id: "{{ NATGW_out.gateway_id }}"
       register: privRT_out
+
+    - debug: 
+        var: "{{ item }}"
+      loop: 
+        - vpcout.vpc.id
+        - pubsub1_out.subnet.id
+        - pubsub2_out.subnet.id
+        - pubsub3_out.subnet.id
+        - privsub1_out.subnet.id
+        - privsub2_out.subnet.id
+        - privsub3_out.subnet.id
+        - igw_out.gateway_id
+        - pubRT_out.route_table.id
+        - NATGW_out.gateway_id
+        - privRT_out.route_table.id
